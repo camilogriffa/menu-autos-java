@@ -54,5 +54,13 @@ public class Auto {
     this.tieneAlrma = tieneAlrma;
   }
 
+  public String getPatente() {
+    return null;
+  }
+
+  public Object getModelo() {
+    return null;
+  }
+
 
 }
