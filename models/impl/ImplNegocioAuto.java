@@ -10,7 +10,11 @@ public class ImplNegocioAuto implements IAuto {
 
   @Override
   public Auto buscarAuto(String nroPatente) {
-    // TODO Auto-generated method stub
+    for (int i = 0; i < index; i++) {
+      if (autos[i] != null && autos[i].getPatente().equals(nroPatente)) {
+        return autos[i];
+      }
+    }
     return null;
   }
 
