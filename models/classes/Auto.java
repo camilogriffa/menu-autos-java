@@ -1,6 +1,6 @@
 package models.classes;
 
-public class Auto {
+public class Auto extends Vehiculo {
   private String color;
   private int cantPuertas;
   private boolean tieneAire;
@@ -53,14 +53,5 @@ public class Auto {
   public void setTieneAlrma(boolean tieneAlrma) {
     this.tieneAlrma = tieneAlrma;
   }
-
-  public String getPatente() {
-    return null;
-  }
-
-  public Object getModelo() {
-    return null;
-  }
-
 
 }
