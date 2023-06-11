@@ -1,17 +1,15 @@
-package models.interfaces;
+package negocio.inter;
 
-import models.classes.Auto;
+import entidades.auto.Auto;
 
 public interface IAuto {
-
-  public Auto buscarAuto(String nroPatente);
-
   public Auto[] listarAutos();
+
+  public Auto buscarAuto(String patente);
 
   public void insertarAuto(Auto auto);
 
   public void eliminarAuto(String patente);
 
   public void modificarAuto(Auto auto, String patente);
-
 }
