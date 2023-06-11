@@ -88,7 +88,7 @@ public class ImpAuto implements IAuto {
     for (int i = 0; i < index; i++) {
       if (cars[i] != null && cars[i].getPatente().equals(patente)) {
         cars[i] = auto;
-        System.out.println("Auto modificado: " + patente);
+        System.out.println("Se modificó el auto: " + "(" + cars[i].getId() + ") " + patente);
         return;
       }
     }
