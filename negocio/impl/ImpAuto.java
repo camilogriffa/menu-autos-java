@@ -83,9 +83,17 @@ public class ImpAuto implements IAuto {
     System.out.println("No existe un auto con esa patente");
   }
 
-
   @Override
-  public void modificarAuto(Auto auto, String patente) {}
+  public void modificarAuto(Auto auto, String patente) {
+    for (int i = 0; i < index; i++) {
+      if (cars[i] != null && cars[i].getPatente().equals(patente)) {
+        cars[i] = auto;
+        System.out.println("Auto modificado: " + patente);
+        return;
+      }
+    }
+    System.out.println("No existe un auto con esa patente");
+  }
 
   private boolean vectorVacio() {
     return (cars.length > 0);
