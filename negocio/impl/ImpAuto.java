@@ -66,7 +66,23 @@ public class ImpAuto implements IAuto {
   }
 
   @Override
-  public void eliminarAuto(String patente) {}
+  public void eliminarAuto(String patente) {
+    for (int i = 0; i < index; i++) {
+      if (cars[i] != null && cars[i].getPatente().equals(patente)) {
+        System.out.println(
+          "Se elimina el auto: " + "\n" +
+          "(" + cars[i].getId() + ") " +
+          cars[i].getMarca() + " " +
+          cars[i].getModelo() + " " +
+          cars[i].getYear() + " " +
+          patente);
+        cars[i] = null;
+        return;
+      }
+    }
+    System.out.println("No existe un auto con esa patente");
+  }
+
 
   @Override
   public void modificarAuto(Auto auto, String patente) {}
