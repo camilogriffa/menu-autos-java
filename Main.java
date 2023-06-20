@@ -31,7 +31,7 @@ public class Main {
           String marca = scanner.nextLine();
           System.out.println("2. Ingresar modelo: ");
           String modelo = scanner.nextLine();
-          System.out.println("3. Ingresar origin: ");
+          System.out.println("3. Ingresar origen: ");
           String origen = scanner.nextLine();
           System.out.println("4. Ingresar puertas: ");
           int puertas = scanner.nextInt();
