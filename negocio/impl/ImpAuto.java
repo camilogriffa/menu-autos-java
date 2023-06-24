@@ -20,8 +20,15 @@ public class ImpAuto implements IAuto {
             cars[i].getMarca() +
             " " +
             cars[i].getModelo() +
+            " - " +
+            cars[i].getColor() +
             " " +
-            cars[i].getYear());
+            cars[i].getYear() +
+            " - " +
+            cars[i].getOrigen() +
+            " " +
+            cars[i].getPatente()
+          );
         }
       }
     } else {
