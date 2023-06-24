@@ -144,7 +144,8 @@ public class Main {
   }
 
   public static void eliminarUnAuto() {
-    System.out.println("entre al eliminar un auto");
-    iAuto.eliminarAuto(null);
+    System.out.println("0. Eliminar - Ingrese la patente del vehiculo: ");
+    String patente = scanner.nextLine();
+    iAuto.eliminarAuto(patente);
   }
 }
