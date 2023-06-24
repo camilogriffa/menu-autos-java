@@ -12,4 +12,6 @@ public interface IAuto {
   public void eliminarAuto(String patente);
 
   public void modificarAuto(Auto auto, String patente);
+
+  public void obtenerDatoAuto(int datoInt, String datoString, String patente);
 }
