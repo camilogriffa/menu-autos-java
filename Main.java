@@ -17,7 +17,9 @@ public class Main {
       System.out.println("2. Modificar auto");
       System.out.println("3. Eliminar auto");
       System.out.println("4. Listar autos");
-      System.out.println("5. Salir");
+      System.out.println("5. Deshacer");
+      System.out.println("6. Rehacer");
+      System.out.println("7. Salir");
       System.out.print("Ingrese el número de opción: ");
 
       int opcion = scanner.nextInt();
@@ -37,6 +39,12 @@ public class Main {
           listaDeAutos();
           break;
         case 5:
+          deshacerAccion();
+          break;
+        case 6:
+          rehacerAccion();
+          break;
+        case 7:
           continuar = false;
           break;
         default:
@@ -148,4 +156,8 @@ public class Main {
     String patente = scanner.nextLine();
     iAuto.eliminarAuto(patente);
   }
+
+  public static void deshacerAccion() {}
+
+  public static void rehacerAccion() {}
 }
