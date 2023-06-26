@@ -20,8 +20,15 @@ public class ImpAuto implements IAuto {
             cars[i].getMarca() +
             " " +
             cars[i].getModelo() +
+            " - " +
+            cars[i].getColor() +
             " " +
-            cars[i].getYear());
+            cars[i].getYear() +
+            " - " +
+            cars[i].getOrigen() +
+            " " +
+            cars[i].getPatente()
+          );
         }
       }
     } else {
@@ -67,32 +74,53 @@ public class ImpAuto implements IAuto {
 
   @Override
   public void eliminarAuto(String patente) {
-    for (int i = 0; i < index; i++) {
-      if (cars[i] != null && cars[i].getPatente().equals(patente)) {
-        System.out.println(
-          "Se elimina el auto: " + "\n" +
-          "(" + cars[i].getId() + ") " +
-          cars[i].getMarca() + " " +
-          cars[i].getModelo() + " " +
-          cars[i].getYear() + " " +
-          patente);
-        cars[i] = null;
-        return;
+    if (searchCarIndex(patente) != -1) {
+      for (int i = 0; i < index; i++) {
+        if (cars[i] != null && cars[i].getPatente().equals(patente)) {
+          System.out.println(
+            "Se elimina el auto: " + "\n" +
+            "(" + cars[i].getId() + ") " +
+            cars[i].getMarca() + " " +
+            cars[i].getModelo() + " " +
+            cars[i].getYear() + " " +
+            patente);
+          cars[i] = null;
+          return;
+        }
       }
+    } else {
+      System.out.println("No existe un auto con esa patente");
     }
-    System.out.println("No existe un auto con esa patente");
   }
 
   @Override
   public void modificarAuto(Auto auto, String patente) {
-    for (int i = 0; i < index; i++) {
-      if (cars[i] != null && cars[i].getPatente().equals(patente)) {
-        cars[i] = auto;
-        System.out.println("Se modificó el auto: " + "(" + cars[i].getId() + ") " + patente);
-        return;
+    if (searchCarIndex(patente) != -1) {
+      for (int i = 0; i < index; i++) {
+        if (cars[i] != null && cars[i].getPatente().equals(patente)) {
+          cars[i] = auto;
+          System.out.println("Se modificó el auto: " + "(" + cars[i].getId() + ") " + patente);
+          return;
+        }
       }
+    } else {
+      System.out.println("No existe un auto con esa patente");
     }
-    System.out.println("No existe un auto con esa patente");
+  }
+
+  @Override
+  public void obtenerDatoAuto(int datoInt, String datoString, String patente) {
+    if (searchCarIndex(patente) != -1) {
+      for (int i = 0; i < index; i++) {
+        if (cars[i] != null && cars[i].getPatente().equals(patente)) {
+          System.out.println(
+            "- El dato " + datoString + " actual es: " + searchCarProperty(datoInt, cars[i])
+          );
+        }
+      }
+    } else {
+      System.out.println("No existe un auto con esa patente");
+    }
   }
 
   private boolean vectorVacio() {
@@ -113,6 +141,47 @@ public class ImpAuto implements IAuto {
     if (state == true) return "Si";
     else if (state == false) return "No";
     return null;
+  }
+
+  private int searchCarIndex(String patente) {
+    for (int i = 0; i < index; i++) {
+      if (cars[i] != null && cars[i].getPatente().equals(patente)) return i;
+    }
+    return -1;
+  }
+
+  private String searchCarProperty(int property, Auto auto) {
+    String result = "";
+    switch (property) {
+      case 1:
+        result = auto.getMarca();
+        break;
+      case 2:
+        result = auto.getModelo();
+        break;
+      case 3:
+        result = auto.getOrigen();
+        break;
+      // case 4:
+      //   result = auto.getPuertas();
+      //   break;
+      // case 5:
+      //   result = auto.getYear();
+      //   break;
+      case 6:
+        result = auto.getColor();
+        break;
+      case 7:
+        result = auto.getTipo();
+        break;
+      // case 8:
+      //   result = auto.getTieneAire();
+      //   break;
+      // case 9:
+      //   result = auto.getTieneAlarma();
+      //   break;
+    }
+    return result;
   }
 
 }
