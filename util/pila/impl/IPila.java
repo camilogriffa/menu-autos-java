@@ -1,13 +1,11 @@
 package util.pila.impl;
 
-import util.pila.NodoPila;
+import entidades.auto.Auto;
 
 public interface IPila {
-	public void apilar(NodoPila nodo);
+	public void apilar(Auto car);
 
-	public void apilarConOrdenacion(NodoPila nodo);
-
-	public NodoPila desapilar();
+	public Auto desapilar();
 
 	public void listarPila();
 
