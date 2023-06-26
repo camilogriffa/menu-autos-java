@@ -2,10 +2,14 @@ import entidades.auto.Auto;
 import negocio.impl.ImpAuto;
 import negocio.inter.IAuto;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Main {
   private static IAuto iAuto;
   private static Scanner scanner = new Scanner(System.in);
+  private static Stack<Auto> accionesRealizadas = new Stack<>();
+  private static Stack<Auto> accionesDeshacer = new Stack<>();
+
 
   public static void main(String[] args) {
     iAuto = (IAuto) new ImpAuto();
@@ -157,7 +161,23 @@ public class Main {
     iAuto.eliminarAuto(patente);
   }
 
-  public static void deshacerAccion() {}
+  public static void deshacerAccion() {
+      if (accionesRealizadas.isEmpty()) {
+      System.out.println("No hay acciones para deshacer.");
+    } else {
+      String ultimaAccion = accionesRealizadas.pop();
+      accionesDeshacer.push(ultimaAccion);
+      System.out.println("Se deshizo la acción: " + ultimaAccion);
+    }
+  }
 
-  public static void rehacerAccion() {}
+  public static void rehacerAccion() {
+      if (accionesDeshacer.isEmpty()) {
+      System.out.println("No hay acciones para rehacer.");
+    } else {
+      String accionDeshacer = accionesDeshacer.pop();
+      accionesRealizadas.push(accionDeshacer);
+      System.out.println("Se rehizo la acción: " + accionDeshacer);
+  }
+  }
 }
