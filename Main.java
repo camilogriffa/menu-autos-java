@@ -165,7 +165,7 @@ public class Main {
       if (accionesRealizadas.isEmpty()) {
       System.out.println("No hay acciones para deshacer.");
     } else {
-      String ultimaAccion = accionesRealizadas.pop();
+      Auto ultimaAccion = accionesRealizadas.pop();
       accionesDeshacer.push(ultimaAccion);
       System.out.println("Se deshizo la acción: " + ultimaAccion);
     }
@@ -175,7 +175,7 @@ public class Main {
       if (accionesDeshacer.isEmpty()) {
       System.out.println("No hay acciones para rehacer.");
     } else {
-      String accionDeshacer = accionesDeshacer.pop();
+      Auto accionDeshacer = accionesDeshacer.pop(); 
       accionesRealizadas.push(accionDeshacer);
       System.out.println("Se rehizo la acción: " + accionDeshacer);
   }
