@@ -78,13 +78,18 @@ public class Auto extends Vehiculo {
   @Override
 	public String toString() {
 		return
-      "("+id+")"+" "
-      +"Nombre: "+marca+" "+modelo+" "
-      +"Registro: "+patente+" "+year+" "
-      +"Color: "+color+" "
-      +"Puertas: "+puertas+" "
-			+"Tiene Aire: "+tieneAire+" "
-			+"Tiene Alarma: "+tieneAlarma;
+      " ID: " +
+      getId() +
+      " MARCA: " +
+      getMarca() +
+      " MODELO: " +
+      getModelo() +
+      " COLOR: " +
+      getColor() +
+      " PATENTE: " +
+      getPatente() +
+      " AÑO: " +
+      getYear();
 	}
 
 }

@@ -35,6 +35,7 @@ public class ImplPila implements IPila {
   @Override
   public void listarPila() {
     if (!esVacia()) {
+      System.out.println("REGISTRO PILA:");
       NodoPila aux = ult;
       while (aux != null) {
         System.out.println(aux.auto);
