@@ -168,26 +168,6 @@ public class Main {
     iAuto.eliminarAuto(patente);
   }
 
-<<<<<<< HEAD
-  public static void deshacerAccion() {
-      if (accionesRealizadas.isEmpty()) {
-      System.out.println("No hay acciones para deshacer.");
-    } else {
-      Auto ultimaAccion = accionesRealizadas.pop();
-      accionesDeshacer.push(ultimaAccion);
-      System.out.println("Se deshizo la acción: " + ultimaAccion);
-    }
-  }
-
-  public static void rehacerAccion() {
-      if (accionesDeshacer.isEmpty()) {
-      System.out.println("No hay acciones para rehacer.");
-    } else {
-      Auto accionDeshacer = accionesDeshacer.pop(); 
-      accionesRealizadas.push(accionDeshacer);
-      System.out.println("Se rehizo la acción: " + accionDeshacer);
-  }
-=======
   public static void deshacerAccion(ImplPila pila, ImplPila pilaAux) {
     Auto des = pila.desapilar();
     if (des != null) {
@@ -206,6 +186,5 @@ public class Main {
       } else {
         System.out.println("No existe una accion por rehacer");
       }
->>>>>>> main
   }
 }
