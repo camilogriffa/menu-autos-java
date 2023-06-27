@@ -34,7 +34,7 @@ public class Main {
           insertarUnAuto(pilaAutos);
           break;
         case 2:
-          modificarUnAuto();
+          modificarUnAuto(pilaAutos);
           break;
         case 3:
           eliminarUnAuto();
@@ -105,10 +105,11 @@ public class Main {
   }
 
   public static void listaDeAutos(ImplPila pila) {
+    iAuto.listarAutos();
     pila.listarPila();
   }
 
-  public static void modificarUnAuto() {
+  public static void modificarUnAuto(ImplPila pila) {
     System.out.println("0. Modificar - Ingrese la patente del vehiculo: ");
     String patente = scanner.nextLine();
 
@@ -153,6 +154,7 @@ public class Main {
     scanner.nextLine();
 
     Auto newCar = new Auto(id, año, tipo, patente, color, marca, modelo, origen, puertas, tieneAire, tieneAlarma);
+    pila.apilar(newCar);
     iAuto.modificarAuto(newCar, patente);
   }
 
