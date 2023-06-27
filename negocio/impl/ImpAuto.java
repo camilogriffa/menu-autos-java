@@ -10,24 +10,22 @@ public class ImpAuto implements IAuto {
   @Override
   public Auto[] listarAutos() {
     if (vectorVacio()) {
-      System.out.println("Listado de autos:");
+      System.out.println("ESTADO LOCAL:");
       for (int i = 0; i < cars.length; i++) {
         if (cars[i] != null) {
           System.out.println(
-            "(" +
+            " ID: " +
             cars[i].getId() +
-            ") " +
+            " MARCA: " +
             cars[i].getMarca() +
-            " " +
+            " MODELO: " +
             cars[i].getModelo() +
-            " - " +
+            " COLOR: " +
             cars[i].getColor() +
-            " " +
-            cars[i].getYear() +
-            " - " +
-            cars[i].getOrigen() +
-            " " +
-            cars[i].getPatente()
+            " PATENTE: " +
+            cars[i].getPatente() +
+            " AÑO: " +
+            cars[i].getYear()
           );
         }
       }

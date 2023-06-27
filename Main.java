@@ -1,6 +1,8 @@
 import entidades.auto.Auto;
 import negocio.impl.ImpAuto;
 import negocio.inter.IAuto;
+import util.pila.impl.ImplPila;
+
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -14,6 +16,8 @@ public class Main {
   public static void main(String[] args) {
     iAuto = (IAuto) new ImpAuto();
     boolean continuar = true;
+    ImplPila pilaAutos = new ImplPila();
+    ImplPila pilaAutosAux = new ImplPila();
 
     while (continuar) {
       System.out.println("----- Menú de Opciones -----");
@@ -21,9 +25,9 @@ public class Main {
       System.out.println("2. Modificar auto");
       System.out.println("3. Eliminar auto");
       System.out.println("4. Listar autos");
-      System.out.println("5. Deshacer");
-      System.out.println("6. Rehacer");
-      System.out.println("7. Salir");
+      System.out.println("5. Deshacer acción");
+      System.out.println("6. Rehacer acción");
+      System.out.println("7. Salir del programa");
       System.out.print("Ingrese el número de opción: ");
 
       int opcion = scanner.nextInt();
@@ -31,22 +35,22 @@ public class Main {
 
       switch (opcion) {
         case 1:
-          insertarUnAuto();
+          insertarUnAuto(pilaAutos);
           break;
         case 2:
-          modificarUnAuto();
+          modificarUnAuto(pilaAutos);
           break;
         case 3:
           eliminarUnAuto();
           break;
         case 4:
-          listaDeAutos();
+          listaDeAutos(pilaAutos);
           break;
         case 5:
-          deshacerAccion();
+          deshacerAccion(pilaAutos, pilaAutosAux);
           break;
         case 6:
-          rehacerAccion();
+          rehacerAccion(pilaAutos, pilaAutosAux);
           break;
         case 7:
           continuar = false;
@@ -60,7 +64,7 @@ public class Main {
     scanner.close();
   }
 
-  public static void insertarUnAuto() {
+  public static void insertarUnAuto(ImplPila pila) {
     System.out.println("0. Ingresar id (identificador numérico): ");
     int id = scanner.nextInt();
     scanner.nextLine();
@@ -100,14 +104,16 @@ public class Main {
     scanner.nextLine();
 
     Auto newCar = new Auto(id, año, tipo, patente, color, marca, modelo, origen, puertas, tieneAire, tieneAlarma);
+    pila.apilar(newCar);
     iAuto.insertarAuto(newCar);
   }
 
-  public static void listaDeAutos() {
+  public static void listaDeAutos(ImplPila pila) {
     iAuto.listarAutos();
+    pila.listarPila();
   }
 
-  public static void modificarUnAuto() {
+  public static void modificarUnAuto(ImplPila pila) {
     System.out.println("0. Modificar - Ingrese la patente del vehiculo: ");
     String patente = scanner.nextLine();
 
@@ -152,6 +158,7 @@ public class Main {
     scanner.nextLine();
 
     Auto newCar = new Auto(id, año, tipo, patente, color, marca, modelo, origen, puertas, tieneAire, tieneAlarma);
+    pila.apilar(newCar);
     iAuto.modificarAuto(newCar, patente);
   }
 
@@ -161,6 +168,7 @@ public class Main {
     iAuto.eliminarAuto(patente);
   }
 
+<<<<<<< HEAD
   public static void deshacerAccion() {
       if (accionesRealizadas.isEmpty()) {
       System.out.println("No hay acciones para deshacer.");
@@ -179,5 +187,25 @@ public class Main {
       accionesRealizadas.push(accionDeshacer);
       System.out.println("Se rehizo la acción: " + accionDeshacer);
   }
+=======
+  public static void deshacerAccion(ImplPila pila, ImplPila pilaAux) {
+    Auto des = pila.desapilar();
+    if (des != null) {
+      pilaAux.apilar(des);
+      System.out.println("Acción anterior deshecha");
+    } else {
+      System.out.println("No existe una accion por deshacer");
+    }
+  }
+
+  public static void rehacerAccion(ImplPila pila, ImplPila pilaAux) {
+    Auto reh = pilaAux.desapilar();
+      if (reh != null) {
+        pila.apilar(reh);
+        System.out.println("Acción anterior rehecha");
+      } else {
+        System.out.println("No existe una accion por rehacer");
+      }
+>>>>>>> main
   }
 }

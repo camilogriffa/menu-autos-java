@@ -75,4 +75,21 @@ public class Auto extends Vehiculo {
     this.tieneAlarma = tieneAlarma;
   }
 
+  @Override
+	public String toString() {
+		return
+      " ID: " +
+      getId() +
+      " MARCA: " +
+      getMarca() +
+      " MODELO: " +
+      getModelo() +
+      " COLOR: " +
+      getColor() +
+      " PATENTE: " +
+      getPatente() +
+      " AÑO: " +
+      getYear();
+	}
+
 }
