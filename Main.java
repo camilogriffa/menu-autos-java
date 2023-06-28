@@ -4,13 +4,12 @@ import negocio.inter.IAuto;
 import util.pila.impl.ImplPila;
 
 import java.util.Scanner;
-import java.util.Stack;
 
 public class Main {
   private static IAuto iAuto;
   private static Scanner scanner = new Scanner(System.in);
-  private static Stack<Auto> accionesRealizadas = new Stack<>();
-  private static Stack<Auto> accionesDeshacer = new Stack<>();
+  // private static Stack<Auto> accionesRealizadas = new Stack<>(); comento estas lineas ya que no estamos haciendo uso de estas clases
+  // private static Stack<Auto> accionesDeshacer = new Stack<>();
 
 
   public static void main(String[] args) {
@@ -116,6 +115,11 @@ public class Main {
   public static void modificarUnAuto(ImplPila pila) {
     System.out.println("0. Modificar - Ingrese la patente del vehiculo: ");
     String patente = scanner.nextLine();
+
+    if (iAuto.buscarAuto(patente) == null) {
+      System.out.println("No hay autos para modificar con esa patente.");
+      return;
+    }
 
     System.out.println("1. Modificar - Marca: ");
     iAuto.obtenerDatoAuto(1, "marca", patente);

@@ -1,9 +1,11 @@
 package negocio.inter;
 
+import java.util.Vector;
+
 import entidades.auto.Auto;
 
 public interface IAuto {
-  public Auto[] listarAutos();
+  public Vector<Auto> listarAutos();
 
   public Auto buscarAuto(String patente);
 
