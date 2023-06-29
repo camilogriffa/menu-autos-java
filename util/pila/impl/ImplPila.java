@@ -52,4 +52,12 @@ public class ImplPila implements IPila {
     return false;
   }
 
+  public Auto obtenerUltimaPosicion() {
+    if (!esVacia()) {
+      return ult.auto;
+    } else {
+      return null;
+    }
+  }
+
 };
