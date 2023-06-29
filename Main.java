@@ -168,6 +168,8 @@ public class Main {
     Auto des = pila.desapilar();
     if (des != null) {
       pilaAux.apilar(des);
+      Auto ult = pila.obtenerUltimaPosicion();
+      iAuto.modificarAuto(ult, ult.getPatente());
       System.out.println("Acción anterior deshecha");
     } else {
       System.out.println("No existe una accion por deshacer");
@@ -178,6 +180,7 @@ public class Main {
     Auto reh = pilaAux.desapilar();
       if (reh != null) {
         pila.apilar(reh);
+        iAuto.modificarAuto(reh, reh.getPatente());
         System.out.println("Acción anterior rehecha");
       } else {
         System.out.println("No existe una accion por rehacer");
