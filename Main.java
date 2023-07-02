@@ -191,13 +191,41 @@ public class Main {
         break;
     }
 
-    System.out.println("9. Ingresar si tiene aire (true, false): ");
-    boolean tieneAire = scanner.nextBoolean();
+    System.out.println("9. Ingresar si tiene aire: ");
+    System.out.println("  1. TRUE");
+    System.out.println("  2. FALSE");
+    int tieneAireSel = scanner.nextInt();
     scanner.nextLine();
+    boolean tieneAire = false;
+    switch (tieneAireSel) {
+      case 1:
+        tieneAire = true;
+        break;
+      case 2:
+        tieneAire = false;
+        break;
+      default:
+        tieneAire = false;
+        break;
+    }
 
-    System.out.println("10. Ingresar si tiene alarma (true, false): ");
-    boolean tieneAlarma = scanner.nextBoolean();
+    System.out.println("10. Ingresar si tiene alarma: ");
+    System.out.println("  1. TRUE");
+    System.out.println("  2. FALSE");
+    int tieneAlarmaSel = scanner.nextInt();
     scanner.nextLine();
+    boolean tieneAlarma = false;
+    switch (tieneAlarmaSel) {
+      case 1:
+        tieneAlarma = true;
+        break;
+      case 2:
+        tieneAlarma = false;
+        break;
+      default:
+        tieneAlarma = false;
+        break;
+    }
 
     Auto newCar = new Auto(id, año, tipo, patente, color, marca, modelo, origen, puertas, tieneAire, tieneAlarma);
     pila.apilar(newCar);
