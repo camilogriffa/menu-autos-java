@@ -150,10 +150,46 @@ public class Main {
     String patente = scanner.nextLine();
 
     System.out.println("7. Ingresar color: ");
-    String color = scanner.nextLine();
+    System.out.println("  1. NEGRO");
+    System.out.println("  2. BLANCO");
+    System.out.println("  3. AMARILLO");
+    int colorSel = scanner.nextInt();
+    scanner.nextLine();
+    String color = "COLOR";
+    switch (colorSel) {
+      case 1:
+        color = "NEGRO";
+        break;
+      case 2:
+        color = "BLANCO";
+        break;
+      case 3:
+        color = "AMARILLO";
+        break;
+      default:
+        break;
+    }
 
-    System.out.println("8. Ingresar tipo (urbano, todoterreno, deportivo): ");
-    String tipo = scanner.nextLine();
+    System.out.println("8. Ingresar tipo: ");
+    System.out.println("  1. 4X4");
+    System.out.println("  2. URBANO");
+    System.out.println("  3. DEPORTIVO");
+    int tipoSel = scanner.nextInt();
+    scanner.nextLine();
+    String tipo = "TIPO";
+    switch (tipoSel) {
+      case 1:
+        tipo = "4X4";
+        break;
+      case 2:
+        tipo = "URBANO";
+        break;
+      case 3:
+        tipo = "DEPORTIVO";
+        break;
+      default:
+        break;
+    }
 
     System.out.println("9. Ingresar si tiene aire (true, false): ");
     boolean tieneAire = scanner.nextBoolean();
