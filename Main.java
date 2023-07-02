@@ -66,10 +66,74 @@ public class Main {
     scanner.nextLine();
 
     System.out.println("1. Ingresar marca: ");
-    String marca = scanner.nextLine();
+    System.out.println("  1. FORD");
+    System.out.println("  2. TOYOTA");
+    System.out.println("  3. CHEVROLET");
+    int marcaSel = scanner.nextInt();
+    scanner.nextLine();
+    String marca = "MARCA";
+    switch (marcaSel) {
+      case 1:
+        marca = "FORD";
+        break;
+      case 2:
+        marca = "TOYOTA";
+        break;
+      case 3:
+        marca = "CHEVROLET";
+        break;
+      default:
+        break;
+    }
 
     System.out.println("2. Ingresar modelo: ");
-    String modelo = scanner.nextLine();
+    String modelo = "MODELO";
+    switch (marcaSel) {
+      case 1:
+        System.out.println("  1. RANGER");
+        System.out.println("  2. RAPTOR");
+        System.out.println("  3. FOCUS");
+        int fordSel = scanner.nextInt();
+        scanner.nextLine();
+        if (fordSel == 1) {
+          modelo = "RANGER";
+        } else if (fordSel == 2) {
+          modelo = "RAPTOR";
+        } else if (fordSel == 3) {
+          modelo = "FOCUS";
+        }
+        break;
+      case 2:
+        System.out.println("  1. HILUX");
+        System.out.println("  2. ETIOS");
+        System.out.println("  3. RAV4");
+        int toyotaSel = scanner.nextInt();
+        scanner.nextLine();
+        if (toyotaSel == 1) {
+          modelo = "HILUX";
+        } else if (toyotaSel == 2) {
+          modelo = "ETIOS";
+        } else if (toyotaSel == 3) {
+          modelo = "RAV4";
+        }
+        break;
+      case 3:
+        System.out.println("  1. S10");
+        System.out.println("  2. CRUZE");
+        System.out.println("  3. CAMARO");
+        int chevroletSel = scanner.nextInt();
+        scanner.nextLine();
+        if (chevroletSel == 1) {
+          modelo = "S10";
+        } else if (chevroletSel == 2) {
+          modelo = "CRUZE";
+        } else if (chevroletSel == 3) {
+          modelo = "CAMARO";
+        }
+        break;
+      default:
+        break;
+    }
 
     System.out.println("3. Ingresar origen: ");
     String origen = scanner.nextLine();
