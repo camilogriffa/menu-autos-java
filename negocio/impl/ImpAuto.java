@@ -20,6 +20,8 @@ public class ImpAuto implements IAuto {
             cars[i].getMarca() +
             " MODELO: " +
             cars[i].getModelo() +
+            " TIPO: " +
+            cars[i].getTipo() +
             " COLOR: " +
             cars[i].getColor() +
             " PATENTE: " +
