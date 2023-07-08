@@ -24,47 +24,37 @@ public class Main {
       System.out.println("5. Deshacer acción");
       System.out.println("6. Rehacer acción");
       System.out.println("7. Salir del programa");
+      System.out.print("Ingrese el número de opción: ");
 
-      int opcion;
-      try {
-        System.out.print("Ingrese el número de opción: ");
-        opcion = scanner.nextInt();
-        if (1 >= opcion && opcion <= 7) {
-          switch (opcion) {
-            case 1:
-              insertarUnAuto(pilaAutos);
-              break;
-            case 2:
-              modificarUnAuto(pilaAutos);
-              break;
-            case 3:
-              eliminarUnAuto();
-              break;
-            case 4:
-              listaDeAutos(pilaAutos);
-              break;
-            case 5:
-              deshacerAccion(pilaAutos, pilaAutosAux);
-              break;
-            case 6:
-              rehacerAccion(pilaAutos, pilaAutosAux);
-              break;
-            case 7:
-              continuar = false;
-              break;
-            default:
-              System.out.println("Opción inválida. Por favor, seleccione una opción válida.");
-              break;
-          }
+      int opcion = scanner.nextInt();
+      scanner.nextLine();
+
+      switch (opcion) {
+        case 1:
+          insertarUnAuto(pilaAutos);
           break;
-        } else {
-          System.out.println("La opción ingresada es incorrecta. Inténtalo nuevamente.");
-        }
-      } catch (Exception e) {
-        System.out.println("La opción ingresada es incorrecta. Inténtalo nuevamente.");
-        scanner.nextLine();
+        case 2:
+          modificarUnAuto(pilaAutos);
+          break;
+        case 3:
+          eliminarUnAuto();
+          break;
+        case 4:
+          listaDeAutos(pilaAutos);
+          break;
+        case 5:
+          deshacerAccion(pilaAutos, pilaAutosAux);
+          break;
+        case 6:
+          rehacerAccion(pilaAutos, pilaAutosAux);
+          break;
+        case 7:
+          continuar = false;
+          break;
+        default:
+          System.out.println("Opción inválida. Por favor, seleccione una opción válida.");
+          break;
       }
-
     }
 
     scanner.close();
