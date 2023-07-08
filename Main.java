@@ -61,9 +61,22 @@ public class Main {
   }
 
   public static void insertarUnAuto(ImplPila pila) {
-    System.out.println("0. Ingresar id (identificador numérico: 1, 2, 3, 4...): ");
-    int id = scanner.nextInt();
-    scanner.nextLine();
+    int id;
+    do {
+      try {
+        System.out.println("0. Ingresar id (identificador numérico: 1, 2, 3, 4...): ");
+        id = scanner.nextInt();
+        if (id <= 99) {
+          break;
+        } else {
+          System.out.println("0. El identificador debe ser menor o igual a 99. Inténtalo nuevamente.");
+        }
+      } catch (Exception e) {
+        System.out.println("0. Error: Ingresa un identificador válido. Inténtalo nuevamente.");
+        scanner.nextLine();
+      }
+    } while (true);
+    System.out.println("0. Identificador ingresado: " + id);
 
     System.out.println("1. Ingresar marca: ");
     System.out.println("  1. FORD");
