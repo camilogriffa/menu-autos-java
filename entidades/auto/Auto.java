@@ -84,6 +84,8 @@ public class Auto extends Vehiculo {
       getMarca() +
       " MODELO: " +
       getModelo() +
+      " TIPO: " +
+      getTipo() +
       " COLOR: " +
       getColor() +
       " PATENTE: " +
