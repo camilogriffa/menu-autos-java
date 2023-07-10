@@ -2,6 +2,8 @@ package negocio.impl;
 
 import entidades.auto.Auto;
 import negocio.inter.IAuto;
+import util.lista.doble.NodoListaDoble;
+import util.lista.doble.impl.ImplListaDoble;
 
 public class ImpAuto implements IAuto {
   private static Auto[] cars = new Auto[10];
@@ -73,7 +75,7 @@ public class ImpAuto implements IAuto {
   }
 
   @Override
-  public void eliminarAuto(String patente) {
+  public void eliminarAuto(String patente, ImplListaDoble lista) {
     if (searchCarIndex(patente) != -1) {
       for (int i = 0; i < index; i++) {
         if (cars[i] != null && cars[i].getPatente().equals(patente)) {
@@ -84,6 +86,7 @@ public class ImpAuto implements IAuto {
             cars[i].getModelo() + " " +
             cars[i].getYear() + " " +
             patente);
+          lista.insertarNodo(new NodoListaDoble(cars[i]));
           cars[i] = null;
           return;
         }

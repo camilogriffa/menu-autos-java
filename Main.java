@@ -2,6 +2,7 @@ import entidades.auto.Auto;
 import negocio.impl.ImpAuto;
 import negocio.inter.IAuto;
 import util.pila.impl.ImplPila;
+import util.lista.doble.impl.ImplListaDoble;
 
 import java.util.Scanner;
 
@@ -14,6 +15,7 @@ public class Main {
     boolean continuar = true;
     ImplPila pilaAutos = new ImplPila();
     ImplPila pilaAutosAux = new ImplPila();
+    ImplListaDoble listaDoble = new ImplListaDoble();
 
     while (continuar) {
       System.out.println("----- Menú de Opciones -----");
@@ -37,16 +39,16 @@ public class Main {
           modificarUnAuto(pilaAutos);
           break;
         case 3:
-          eliminarUnAuto();
+          eliminarUnAuto(listaDoble);
           break;
         case 4:
-          listaDeAutos(pilaAutos);
+          listaDeAutos(pilaAutos, listaDoble);
           break;
         case 5:
-          deshacerAccion(pilaAutos, pilaAutosAux);
+          deshacerAccion(pilaAutos, pilaAutosAux, listaDoble);
           break;
         case 6:
-          rehacerAccion(pilaAutos, pilaAutosAux);
+          rehacerAccion(pilaAutos, pilaAutosAux, listaDoble);
           break;
         case 7:
           continuar = false;
@@ -301,9 +303,10 @@ public class Main {
     iAuto.insertarAuto(newCar);
   }
 
-  public static void listaDeAutos(ImplPila pila) {
+  public static void listaDeAutos(ImplPila pila, ImplListaDoble listaDoble) {
     iAuto.listarAutos();
     pila.listarPila();
+    listaDoble.listarListaDoble("asc");
   }
 
   public static void modificarUnAuto(ImplPila pila) {
@@ -355,32 +358,92 @@ public class Main {
     iAuto.modificarAuto(newCar, patente);
   }
 
-  public static void eliminarUnAuto() {
+  public static void eliminarUnAuto(ImplListaDoble listaDoble) {
     System.out.println("0. Eliminar - Ingrese la patente del vehiculo: ");
     String patente = scanner.nextLine();
-    iAuto.eliminarAuto(patente);
+    iAuto.eliminarAuto(patente, listaDoble);
   }
 
-  public static void deshacerAccion(ImplPila pila, ImplPila pilaAux) {
+  public static void deshacerAccion(ImplPila pila, ImplPila pilaAux, ImplListaDoble listaDoble) {
+    System.out.println("0. Ingresar tipo de operación: ");
+    System.out.println("  1. DESHACER INSERTAR");
+    System.out.println("  2. DESHACER MODIFICAR");
+    System.out.println("  3. DESHACER ELIMINAR");
+    int optSel = scanner.nextInt();
+    scanner.nextLine();
     Auto des = pila.desapilar();
-    if (des != null) {
-      pilaAux.apilar(des);
-      Auto ult = pila.obtenerUltimaPosicion();
-      iAuto.modificarAuto(ult, ult.getPatente());
-      System.out.println("Acción anterior deshecha");
-    } else {
-      System.out.println("No existe una accion por deshacer");
+    switch (optSel) {
+      case 1:
+        if (des != null) {
+          pilaAux.apilar(des);
+          iAuto.eliminarAuto(des.getPatente(), listaDoble);
+          System.out.println("Acción anterior deshecha");
+        } else {
+          System.out.println("No existe una accion por deshacer");
+        }
+        break;
+      case 2:
+        if (des != null) {
+          pilaAux.apilar(des);
+          Auto ult = pila.obtenerUltimaPosicion();
+          iAuto.modificarAuto(ult, ult.getPatente());
+          System.out.println("Acción anterior deshecha");
+        } else {
+          System.out.println("No existe una accion por deshacer");
+        }
+        break;
+      case 3:
+        // if (listaDoble.ultimo != null) {
+        //   // pilaAux.apilar(des);
+        //   // iAuto.eliminarAuto(des.getPatente(), listaDoble);
+        //   System.out.println("Acción anterior deshecha");
+        // } else {
+        //   System.out.println("No existe una accion por deshacer");
+        // }
+        break;
+      default:
+        break;
     }
   }
 
-  public static void rehacerAccion(ImplPila pila, ImplPila pilaAux) {
+  public static void rehacerAccion(ImplPila pila, ImplPila pilaAux, ImplListaDoble listaDoble) {
+    System.out.println("0. Ingresar tipo de operación: ");
+    System.out.println("  1. REHACER INSERTAR");
+    System.out.println("  2. REHACER MODIFICAR");
+    System.out.println("  3. REHACER ELIMINAR");
+    int optSel = scanner.nextInt();
+    scanner.nextLine();
     Auto reh = pilaAux.desapilar();
-      if (reh != null) {
-        pila.apilar(reh);
-        iAuto.modificarAuto(reh, reh.getPatente());
-        System.out.println("Acción anterior rehecha");
-      } else {
-        System.out.println("No existe una accion por rehacer");
-      }
+    switch (optSel) {
+      case 1:
+        if (reh != null) {
+          pila.apilar(reh);
+          iAuto.insertarAuto(reh);
+          System.out.println("Acción anterior rehecha");
+        } else {
+          System.out.println("No existe una accion por rehacer");
+        }
+        break;
+      case 2:
+        if (reh != null) {
+          pila.apilar(reh);
+          iAuto.modificarAuto(reh, reh.getPatente());
+          System.out.println("Acción anterior rehecha");
+        } else {
+          System.out.println("No existe una accion por rehacer");
+        }
+        break;
+      case 3:
+        // if (listaDoble.ultimo != null) {
+        //   // pilaAux.apilar(des);
+        //   // iAuto.eliminarAuto(des.getPatente(), listaDoble);
+        //   System.out.println("Acción anterior deshecha");
+        // } else {
+        //   System.out.println("No existe una accion por deshacer");
+        // }
+        break;
+      default:
+        break;
+    }
   }
 }
