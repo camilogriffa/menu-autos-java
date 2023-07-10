@@ -2,6 +2,7 @@ import entidades.auto.Auto;
 import negocio.impl.ImpAuto;
 import negocio.inter.IAuto;
 import util.pila.impl.ImplPila;
+import util.lista.doble.NodoListaDoble;
 import util.lista.doble.impl.ImplListaDoble;
 
 import java.util.Scanner;
@@ -306,7 +307,6 @@ public class Main {
   public static void listaDeAutos(ImplPila pila, ImplListaDoble listaDoble) {
     iAuto.listarAutos();
     pila.listarPila();
-    listaDoble.listarListaDoble("asc");
   }
 
   public static void modificarUnAuto(ImplPila pila) {
@@ -393,13 +393,16 @@ public class Main {
         }
         break;
       case 3:
-        // if (listaDoble.ultimo != null) {
-        //   // pilaAux.apilar(des);
-        //   // iAuto.eliminarAuto(des.getPatente(), listaDoble);
-        //   System.out.println("Acción anterior deshecha");
-        // } else {
-        //   System.out.println("No existe una accion por deshacer");
-        // }
+        if (listaDoble.ultimo != null) {
+          NodoListaDoble nodoRestore = listaDoble.ultimo;
+          listaDoble.eliminarNodo(nodoRestore);
+          pila.apilar(nodoRestore.dato);
+          pilaAux.apilar(nodoRestore.dato);
+          iAuto.insertarAuto(nodoRestore.dato);
+          System.out.println("Acción anterior deshecha");
+        } else {
+          System.out.println("No existe una accion por deshacer");
+        }
         break;
       default:
         break;
@@ -434,13 +437,14 @@ public class Main {
         }
         break;
       case 3:
-        // if (listaDoble.ultimo != null) {
-        //   // pilaAux.apilar(des);
-        //   // iAuto.eliminarAuto(des.getPatente(), listaDoble);
-        //   System.out.println("Acción anterior deshecha");
-        // } else {
-        //   System.out.println("No existe una accion por deshacer");
-        // }
+        if (reh != null) {
+          pila.desapilar();
+          pilaAux.desapilar();
+          iAuto.eliminarAuto(reh.getPatente(), listaDoble);
+          System.out.println("Acción anterior rehecha");
+        } else {
+          System.out.println("No existe una accion por rehacer");
+        }
         break;
       default:
         break;
