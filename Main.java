@@ -52,6 +52,8 @@ public class Main {
           rehacerAccion(pilaAutos, pilaAutosAux, listaDoble);
           break;
         case 7:
+          System.out.println("Adios!");
+          System.out.println("Programado por:" + "\n- Camilo Griffa" + "\n- Nicolas Duran" + "\n- Francisco Passalacqua ");
           continuar = false;
           break;
         default:
